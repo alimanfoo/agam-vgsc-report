@@ -167,8 +167,8 @@ geneset_agamp44_vgsc.type.value_counts()
 
 
 
-    exon    93
     CDS     93
+    exon    93
     mRNA     3
     gene     1
     Name: type, dtype: int64
