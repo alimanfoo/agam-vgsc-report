@@ -194,6 +194,11 @@ class SeqFeature(object):
     def seq(self):
         """The reference sequence."""
         return self.genome[self.seqid][self.loc]
+    
+    @property
+    def region_str(self):
+        """A samtools-style region string."""
+        return "%s:%s-%s" % (self.seqid, self.start, self.end)
         
     def to_slice(self):
         """Convert to zero-based stop-exclusive slice. DEPRECATED: use loc property instead."""
