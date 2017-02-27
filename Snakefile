@@ -56,6 +56,18 @@ rule data_variants_phase1:
         "./nbexec.sh notebooks/data_variants_phase1.ipynb"
 
 
+# Extract a VGSC region VCF.
+
+rule data_extract_vcf_phase1:
+    input:
+        rules.setup.output,
+        "notebooks/data_extract_vcf_phase1.ipynb",
+    output:
+        "build/notebooks/data_extract_vcf_phase1.md",
+    shell:
+        "./nbexec.sh notebooks/data_extract_vcf_phase1.ipynb"
+        
+
 # This rule builds all data, indicating success by touching a flag
 # file.
 
@@ -63,6 +75,7 @@ rule data:
     input:
         rules.data_demo.output,
         rules.data_variants_phase1.output,
+        rules.data_extract_vcf_phase1.output,
         # add more inputs here as required
     output:
         touch("build/data.done")
